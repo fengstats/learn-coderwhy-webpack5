@@ -2,6 +2,10 @@
 
 # dependencies
 /node_modules
+
+# 深层次匹配所有目录/node_modules进行忽略
+**/node_modules
+
 /npm-debug.log*
 /yarn-error.log
 # /yarn.lock
@@ -9,6 +13,7 @@
 
 # production
 /dist
+**/dist
 
 # misc
 .DS_Store
