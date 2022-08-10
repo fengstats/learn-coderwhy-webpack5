@@ -2,6 +2,7 @@
 // import 'style-loader!css-loader!./css/index.css'
 
 import './css/index.css'
+import './css/component.less'
 
 // 返回一个div元素节点
 function component() {
