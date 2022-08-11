@@ -28,15 +28,41 @@ module.exports = {
         // loader: 'css-loader'
         // TIP: 需要注意use数组中的loader顺序问题,从下往上依次进行处理
         use: [
-          // 也是下面写法的简写形式,不需要额外的options参数时可以这么写
-          // 'css-loader'
           'style-loader',
-          { loader: 'css-loader' }
+          'css-loader',
+          // 也是下面写法的简写形式,不需要额外的options参数时可以这么写
+          // { loader: 'css-loader' },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                // 需要依赖的插件
+                plugins: [
+                  // postcss-preset-env 中已经包含了 autoprefixer 的内容,所以在此可以注释掉
+                  // require('autoprefixer'),
+                  require('postcss-preset-env')
+                ]
+              }
+            }
+          }
         ]
       },
       {
         test: /\.less$/,
-        use: ['style-loader', 'css-loader', 'less-loader']
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                // 需要依赖的插件
+                plugins: [require('postcss-preset-env')]
+              }
+            }
+          },
+          'less-loader'
+        ]
       }
     ]
   }
