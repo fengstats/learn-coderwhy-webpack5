@@ -32,37 +32,28 @@ module.exports = {
           'css-loader',
           // 也是下面写法的简写形式,不需要额外的options参数时可以这么写
           // { loader: 'css-loader' },
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                // 需要依赖的插件
-                plugins: [
-                  // postcss-preset-env 中已经包含了 autoprefixer 的内容,所以在此可以注释掉
-                  // require('autoprefixer'),
-                  require('postcss-preset-env')
-                ]
-              }
-            }
-          }
+          'postcss-loader'
+          // TIP: 因为 .css 以及 .less 都需要使用 postcss-loader,所以以下配置全部抽离至 postcss.config.js 中
+          // {
+          //   loader: 'postcss-loader',
+          //   options: {
+          //     postcssOptions: {
+          //       // 需要依赖的插件
+          //       plugins: [
+          //         // postcss-preset-env 中已经包含了 autoprefixer 的内容,所以在此可以注释掉
+          //         // require('autoprefixer'),
+          //         // require('postcss-preset-env'),
+          //         // 间写: 如果是 require() 后还需要调用某些信息则无法省略
+          //         'postcss-preset-env'
+          //       ]
+          //     }
+          //   }
+          // }
         ]
       },
       {
         test: /\.less$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                // 需要依赖的插件
-                plugins: [require('postcss-preset-env')]
-              }
-            }
-          },
-          'less-loader'
-        ]
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
       }
     ]
   }
