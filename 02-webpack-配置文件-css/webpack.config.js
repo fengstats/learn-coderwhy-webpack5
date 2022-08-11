@@ -29,9 +29,15 @@ module.exports = {
         // TIP: 需要注意use数组中的loader顺序问题,从下往上依次进行处理
         use: [
           'style-loader',
-          'css-loader',
           // 也是下面写法的简写形式,不需要额外的options参数时可以这么写
-          // { loader: 'css-loader' },
+          // 'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              // importLoaders 的数量取决于需要重复处理的 loaders 数量
+              importLoaders: 1
+            }
+          },
           'postcss-loader'
           // TIP: 因为 .css 以及 .less 都需要使用 postcss-loader,所以以下配置全部抽离至 postcss.config.js 中
           // {
@@ -53,7 +59,23 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
+        // 样式处理流程:
+        // 1. 使用 less-loader 将 .less 文件转化为 .css 文件
+        // 2. 使用 postcss-loader 将 .css 文件中的内容根据所使用到的 plugin 进行处理
+        // 3. 使用 css-loader 处理 css 文件中的样式语法
+        // 4. 使用 style-loader 将样式映射到网 页中
+        use: [
+          'style-loader',
+
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2
+            }
+          },
+          'postcss-loader',
+          'less-loader'
+        ]
       }
     ]
   }
