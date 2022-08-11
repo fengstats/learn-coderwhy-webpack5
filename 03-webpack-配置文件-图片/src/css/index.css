@@ -1,0 +1,9 @@
+/* 需要使用 importLoaders 来处理 */
+@import url(./other.css);
+
+.content {
+  color: blue;
+  /* 借助 postcss-preset-env 可以将其转换为 rgba 形式 */
+  color: #12345678;
+  user-select: none;
+}
