@@ -1,0 +1,64 @@
+const { resolve } = require('path')
+const outputPath = resolve(__dirname, 'dist')
+
+module.exports = {
+  mode: 'development',
+  entry: './src/index.js',
+  output: {
+    path: outputPath,
+    filename: 'bundle.js'
+    // 配置所有 asset 资源路径存放
+    // assetModuleFilename: 'img/[name]_[hash:6][ext]'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          },
+          'postcss-loader'
+        ]
+      },
+      {
+        test: /\.less$/,
+        use: [
+          'style-loader',
+
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2
+            }
+          },
+          'postcss-loader',
+          'less-loader'
+        ]
+      },
+      // 处理文件
+      {
+        test: /\.(jpe?g|png|svg|gif)$/,
+        // 相当于 file-loader
+        // type: 'asset/resource',
+        // 相当于 url-loader
+        // type: 'asset/inline'
+        type: 'asset',
+        generator: {
+          // 配置单个 asset 资源存放
+          filename: 'img/[name]_[hash:6][ext]'
+        },
+        parser: {
+          dataUrlCondition: {
+            // 等同于 url-loader 配置的 limit,工作方式相同
+            maxSize: 50 * 1024
+          }
+        }
+      }
+    ]
+  }
+}
