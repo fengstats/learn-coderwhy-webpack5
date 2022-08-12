@@ -33,7 +33,12 @@ function imgComponent() {
   bgEle.src = codeImg
   bgEle.style.width = '450px'
 
+  // 插入一个小图标
+  const iEle = document.createElement('i')
+  iEle.className = 'iconfont icon-kafei f-icon1'
+
   element.appendChild(bgEle)
+  element.appendChild(iEle)
 
   return element
 }

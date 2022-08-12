@@ -58,6 +58,15 @@ module.exports = {
             maxSize: 50 * 1024
           }
         }
+      },
+      // 处理字体图标资源
+      // i: 表示可以忽略大小写
+      {
+        test: /\.ttf|eot|woff2?/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'font/[name].[hash:6][ext]'
+        }
       }
     ]
   }
