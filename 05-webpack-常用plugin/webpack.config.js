@@ -1,6 +1,8 @@
 const { resolve } = require('path')
 
+const { DefinePlugin } = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const outputPath = resolve(__dirname, 'dist')
 
@@ -74,5 +76,15 @@ module.exports = {
     ]
   },
   // 插件
-  plugins: [new CleanWebpackPlugin()]
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'custom title',
+      template: './public/index.html'
+    }),
+    new DefinePlugin({
+      // 需要使用字符串引号包裹起来,否则直接取到./报错
+      BASE_URL: '"./"'
+    })
+  ]
 }
