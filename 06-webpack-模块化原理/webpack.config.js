@@ -11,8 +11,9 @@ module.exports = {
   // mode: 'production',
   mode: 'development',
   devtool: 'source-map',
+  entry: './src/index.js',
   // entry: './src/commonIndex.js',
-  entry: './src/esIndex.js',
+  // entry: './src/esIndex.js',
   output: {
     path: resolve(__dirname, 'dist'),
     filename: './js/bundle.js'
