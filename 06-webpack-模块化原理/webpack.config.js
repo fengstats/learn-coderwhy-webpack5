@@ -8,8 +8,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   // mode默认不设置的情况下是production,代码打包将会被丑化(压缩)
   // 可选值有：'none' | 'development' | 'production'
-  // mode: 'production',
-  mode: 'development',
+  mode: 'production',
+  // mode: 'development',
   devtool: 'source-map',
   entry: './src/index.js',
   // entry: './src/commonIndex.js',

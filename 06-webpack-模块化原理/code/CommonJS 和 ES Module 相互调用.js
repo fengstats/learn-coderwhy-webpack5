@@ -44,6 +44,7 @@ var __webpack_modules__ = {
 }
 var __webpack_module_cache__ = {}
 
+// 缓存函数
 function __webpack_require__(moduleId) {
   var cachedModule = __webpack_module_cache__[moduleId]
   if (cachedModule !== undefined) {
@@ -69,6 +70,7 @@ function __webpack_require__(moduleId) {
         : function () {
             return module
           }
+    // todo: 这个 a 没看懂,主要也没有使用到
     __webpack_require__.d(getter, { a: getter })
     return getter
   }

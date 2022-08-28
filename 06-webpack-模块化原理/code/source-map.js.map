@@ -1,0 +1,74 @@
+{
+  // 版本号
+  "version": 3,
+  // 打包后的文件 
+  "file": "./js/bundle.js",
+  // 使用 base64 VLQ(variable length quantiy) 编码方式，记录了文件映射等信息
+  "mappings": "oDAEA,SAASA,EAAWC,GAClB,MAAO,kBACT,C,iFAEA,MAAMC,EAAeC,GACZ,Q,kBCGTC,EAAOC,QAAU,CACfC,IALF,SAAaC,EAAIC,GACf,OAAOD,EAAKC,CACd,EAIEC,KAVW,IACJ,O,GCFLC,EAA2B,CAAC,EAGhC,SAASC,EAAoBC,GAE5B,IAAIC,EAAeH,EAAyBE,GAC5C,QAAqBE,IAAjBD,EACH,OAAOA,EAAaR,QAGrB,IAAID,EAASM,EAAyBE,GAAY,CAGjDP,QAAS,CAAC,GAOX,OAHAU,EAAoBH,GAAUR,EAAQA,EAAOC,QAASM,GAG/CP,EAAOC,OACf,CCrBAM,EAAoBK,EAAI,SAASZ,GAChC,IAAIa,EAASb,GAAUA,EAAOc,WAC7B,WAAa,OAAOd,EAAgB,OAAG,EACvC,WAAa,OAAOA,CAAQ,EAE7B,OADAO,EAAoBQ,EAAEF,EAAQ,CAAEG,EAAGH,IAC5BA,CACR,ECNAN,EAAoBQ,EAAI,SAASd,EAASgB,GACzC,IAAI,IAAIC,KAAOD,EACXV,EAAoBY,EAAEF,EAAYC,KAASX,EAAoBY,EAAElB,EAASiB,IAC5EE,OAAOC,eAAepB,EAASiB,EAAK,CAAEI,YAAY,EAAMC,IAAKN,EAAWC,IAG3E,ECPAX,EAAoBY,EAAI,SAASK,EAAKC,GAAQ,OAAOL,OAAOM,UAAUC,eAAeC,KAAKJ,EAAKC,EAAO,ECCtGlB,EAAoBsB,EAAI,SAAS5B,GACX,oBAAX6B,QAA0BA,OAAOC,aAC1CX,OAAOC,eAAepB,EAAS6B,OAAOC,YAAa,CAAEC,MAAO,WAE7DZ,OAAOC,eAAepB,EAAS,aAAc,CAAE+B,OAAO,GACvD,E,qCCFA,MAAM,WAAEpC,GAAe,EAAQ,KAS/BqC,QAAQC,IAAItC,EAAW,IACvBqC,QAAQC,KAAI,IAAAhC,KAAI,EAAG,K",
+  // 从哪些源文件加载而来
+  "sources": [
+    "webpack://webpack-pro/./src/utils/format.js",
+    "webpack://webpack-pro/./src/utils/math.js",
+    "webpack://webpack-pro/webpack/bootstrap",
+    "webpack://webpack-pro/webpack/runtime/compat get default export",
+    "webpack://webpack-pro/webpack/runtime/define property getters",
+    "webpack://webpack-pro/webpack/runtime/hasOwnProperty shorthand",
+    "webpack://webpack-pro/webpack/runtime/make namespace object",
+    "webpack://webpack-pro/./src/index.js"
+  ],
+  // 源代码
+  "sourcesContent": [
+    "// 通过 ES Module 方式进行导出\n\nfunction formatDate(date) {\n  return '2022-08-26 18:45'\n}\n\nconst formatPrice = (price) => {\n  return '100.00'\n}\n\nexport { formatDate, formatPrice }\n",
+    "// 通过 CommonJs 方式进行导出\n\nconst test = () => {\n  return '测试函数'\n}\n\nfunction sum(n1, n2) {\n  return n1 + n2\n}\n\nmodule.exports = {\n  sum,\n  test\n}\n",
+    "// The module cache\nvar __webpack_module_cache__ = {};\n\n// The require function\nfunction __webpack_require__(moduleId) {\n\t// Check if module is in cache\n\tvar cachedModule = __webpack_module_cache__[moduleId];\n\tif (cachedModule !== undefined) {\n\t\treturn cachedModule.exports;\n\t}\n\t// Create a new module (and put it into the cache)\n\tvar module = __webpack_module_cache__[moduleId] = {\n\t\t// no module.id needed\n\t\t// no module.loaded needed\n\t\texports: {}\n\t};\n\n\t// Execute the module function\n\t__webpack_modules__[moduleId](module, module.exports, __webpack_require__);\n\n\t// Return the exports of the module\n\treturn module.exports;\n}\n\n",
+    "// getDefaultExport function for compatibility with non-harmony modules\n__webpack_require__.n = function(module) {\n\tvar getter = module && module.__esModule ?\n\t\tfunction() { return module['default']; } :\n\t\tfunction() { return module; };\n\t__webpack_require__.d(getter, { a: getter });\n\treturn getter;\n};",
+    "// define getter functions for harmony exports\n__webpack_require__.d = function(exports, definition) {\n\tfor(var key in definition) {\n\t\tif(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {\n\t\t\tObject.defineProperty(exports, key, { enumerable: true, get: definition[key] });\n\t\t}\n\t}\n};",
+    "__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }",
+    "// define __esModule on exports\n__webpack_require__.r = function(exports) {\n\tif(typeof Symbol !== 'undefined' && Symbol.toStringTag) {\n\t\tObject.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });\n\t}\n\tObject.defineProperty(exports, '__esModule', { value: true });\n};",
+    "// import { formatDate } from './utils/format.js'\n// const { sum } = require('./utils/math')\n\n// 使用 CommonJS 的方式导入 ES Module 导出的内容\nconst { formatDate } = require('./utils/format')\n// 使用 ES Module 的方式导入 CommonJS 导出的内容\nimport { sum } from './utils/math.js'\n\n// 通过测试我们发现 ES Module 与 CommonJS 是可以相互调用的,为什么？\n\n// 测试报错信息\n// console.log(abc)\n\nconsole.log(formatDate(1))\nconsole.log(sum(1, 100))\n"
+  ],
+  // 转换之前的变量与名称(production模式下)
+  "names": [
+    "formatDate",
+    "date",
+    "formatPrice",
+    "price",
+    "module",
+    "exports",
+    "sum",
+    "n1",
+    "n2",
+    "test",
+    "__webpack_module_cache__",
+    "__webpack_require__",
+    "moduleId",
+    "cachedModule",
+    "undefined",
+    "__webpack_modules__",
+    "n",
+    "getter",
+    "__esModule",
+    "d",
+    "a",
+    "definition",
+    "key",
+    "o",
+    "Object",
+    "defineProperty",
+    "enumerable",
+    "get",
+    "obj",
+    "prop",
+    "prototype",
+    "hasOwnProperty",
+    "call",
+    "r",
+    "Symbol",
+    "toStringTag",
+    "value",
+    "console",
+    "log"
+  ],
+  // sources 所对应的根目录
+  "sourceRoot": ""
+}
