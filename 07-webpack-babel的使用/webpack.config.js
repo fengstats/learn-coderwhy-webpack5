@@ -27,9 +27,19 @@ module.exports = {
             //   '@babel/plugin-transform-arrow-functions',
             //   // 块级作用域
             //   '@babel/plugin-transform-block-scoping'
-            // ],
+            // ]
             // 2. 直接设置预设: 多个插件的组合，根据我们的目标浏览器使用 .browserslistrc 文件配置
-            presets: '@babel/preset-env'
+            // presets: ['@babel/preset-env']
+            // 给 preset 传参
+            presets: [
+              [
+                '@babel/preset-env',
+                // 不推荐这么写：优先级高于 .browserslistrc
+                {
+                  targets: ['chrome 104']
+                }
+              ]
+            ]
           }
         }
       }
