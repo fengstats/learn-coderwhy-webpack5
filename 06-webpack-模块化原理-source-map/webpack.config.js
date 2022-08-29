@@ -46,7 +46,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             // es6 语法转 es5
-            // presets: ['@babel/preset-env']
+            presets: ['@babel/preset-env']
           }
         }
       }

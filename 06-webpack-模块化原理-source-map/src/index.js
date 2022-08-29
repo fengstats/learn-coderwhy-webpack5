@@ -9,7 +9,7 @@ import { sum } from './utils/math.js'
 // 通过测试我们发现 ES Module 与 CommonJS 是可以相互调用的,为什么？
 
 // 测试报错信息
-console.log(abc)
+// console.log(abc)
 
 console.log(formatDate(1))
 console.log(sum(1, 100))
