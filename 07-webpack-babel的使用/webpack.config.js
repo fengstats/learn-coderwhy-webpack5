@@ -8,7 +8,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
-  entry: './src/index.js',
+  // entry: './src/index.js',
+  entry: './src/reactIndex.jsx',
   output: {
     path: resolve(__dirname, 'dist'),
     filename: './js/bundle.js'
@@ -17,7 +18,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         use: 'babel-loader',
         // 排除匹配规则
         exclude: /node_modules/
