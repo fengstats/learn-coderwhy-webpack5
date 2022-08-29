@@ -9,11 +9,15 @@ specifiers:
   babel-loader: ^8.2.5
   clean-webpack-plugin: ^4.0.0
   copy-webpack-plugin: ^11.0.0
+  core-js: ^3.25.0
   html-webpack-plugin: ^5.5.0
+  regenerator-runtime: ^0.13.9
   webpack: ^5.73.0
   webpack-cli: ^4.10.0
 
 dependencies:
+  core-js: registry.npmmirror.com/core-js/3.25.0
+  regenerator-runtime: registry.npmmirror.com/regenerator-runtime/0.13.9
   webpack: registry.npmmirror.com/webpack/5.74.0_webpack-cli@4.10.0
   webpack-cli: registry.npmmirror.com/webpack-cli/4.10.0_webpack@5.74.0
 
@@ -2244,6 +2248,13 @@ packages:
       semver: registry.npmmirror.com/semver/7.0.0
     dev: true
 
+  registry.npmmirror.com/core-js/3.25.0:
+    resolution: {integrity: sha512-CVU1xvJEfJGhyCpBrzzzU1kjCfgsGUxhEvwUV2e/cOedYWHdmluamx+knDnmhqALddMG16fZvIqvs9aijsHHaA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/core-js/-/core-js-3.25.0.tgz}
+    name: core-js
+    version: 3.25.0
+    requiresBuild: true
+    dev: false
+
   registry.npmmirror.com/cross-spawn/7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cross-spawn/-/cross-spawn-7.0.3.tgz}
     name: cross-spawn
@@ -3330,7 +3341,6 @@ packages:
     resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/regenerator-runtime/-/regenerator-runtime-0.13.9.tgz}
     name: regenerator-runtime
     version: 0.13.9
-    dev: true
 
   registry.npmmirror.com/regenerator-transform/0.15.0:
     resolution: {integrity: sha512-LsrGtPmbYg19bcPHwdtmXwbW+TqNvtY4riE3P83foeHRroMbH6/2ddFBfab3t7kbzc7v7p4wbkIecHImqt0QNg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/regenerator-transform/-/regenerator-transform-0.15.0.tgz}

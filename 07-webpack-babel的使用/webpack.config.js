@@ -18,7 +18,9 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        use: 'babel-loader'
+        use: 'babel-loader',
+        // 排除匹配规则
+        exclude: /node_modules/
         // use: {
         //   loader: 'babel-loader',
         //   options: {
