@@ -16,16 +16,23 @@ module.exports = {
 
   module: {
     rules: [
-      // {
-      //   test: /\.js$/,
-      //   use: {
-      //     loader: 'babel-loader',
-      //     options: {
-      //       // es6 语法转 es5
-      //       presets: ['@babel/preset-env']
-      //     }
-      //   }
-      // }
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            // 1. 设置使用哪些插件来对代码进行转换
+            // plugins: [
+            //   // 箭头函数
+            //   '@babel/plugin-transform-arrow-functions',
+            //   // 块级作用域
+            //   '@babel/plugin-transform-block-scoping'
+            // ],
+            // 2. 直接设置预设: 多个插件的组合，根据我们的目标浏览器使用 .browserslistrc 文件配置
+            presets: '@babel/preset-env'
+          }
+        }
+      }
     ]
   },
 
