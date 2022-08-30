@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { VueLoaderPlugin } = require('vue-loader/dist/index')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 module.exports = {
@@ -25,6 +26,15 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.vue$/,
+        // vue-loader 加载的组件默认会帮助我们进行 HMR 的处理
+        use: 'vue-loader',
+      },
+      {
         test: /\.jsx?$/i,
         use: {
           loader: 'babel-loader',
@@ -45,5 +55,6 @@ module.exports = {
     }),
     // 配置 React HMR
     new ReactRefreshWebpackPlugin(),
+    new VueLoaderPlugin(),
   ],
 }

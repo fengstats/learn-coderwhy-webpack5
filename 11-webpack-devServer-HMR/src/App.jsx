@@ -5,7 +5,7 @@ class App extends Component {
     super(props)
 
     this.state = {
-      msg: 'Hello React',
+      msg: 'Hello React Test',
     }
   }
 
