@@ -14,7 +14,7 @@ module.exports = {
   output: {
     // TIP: 必须是一个绝对路径,否则会报错
     path: outputPath,
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
 
   // 模块配置项
@@ -35,10 +35,10 @@ module.exports = {
             loader: 'css-loader',
             options: {
               // importLoaders 的数量取决于需要重复处理的 loaders 数量
-              importLoaders: 1
-            }
+              importLoaders: 1,
+            },
           },
-          'postcss-loader'
+          'postcss-loader',
           // TIP: 因为 .css 以及 .less 都需要使用 postcss-loader,所以以下配置全部抽离至 postcss.config.js 中
           // {
           //   loader: 'postcss-loader',
@@ -55,7 +55,7 @@ module.exports = {
           //     }
           //   }
           // }
-        ]
+        ],
       },
       {
         test: /\.less$/,
@@ -70,13 +70,13 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 2
-            }
+              importLoaders: 2,
+            },
           },
           'postcss-loader',
-          'less-loader'
-        ]
-      }
-    ]
-  }
+          'less-loader',
+        ],
+      },
+    ],
+  },
 }

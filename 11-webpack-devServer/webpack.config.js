@@ -9,6 +9,11 @@ module.exports = {
 
   entry: './src/index.js',
 
+  // 专为 webpack-dev-server 的配置
+  devServer: {
+    hot: true,
+  },
+
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, './dist'),
