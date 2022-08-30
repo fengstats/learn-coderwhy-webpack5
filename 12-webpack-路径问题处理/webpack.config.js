@@ -1,7 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader/dist/index')
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+// const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -16,6 +16,10 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, './dist'),
+    // 这个参数用于和打包后的静态资源进行一个路径拼接
+    // 若想直接本地打包后打开 index.html 看到相关资源效果，可以设置为 ./ 或者不写
+    // 若以静态资源服务部署，则使用 / 或者不写
+    // publicPath: '/',
   },
 
   module: {
@@ -34,7 +38,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
-            plugins: ['react-refresh/babel'],
+            // plugins: ['react-refresh/babel'],
           },
         },
       },
@@ -46,7 +50,7 @@ module.exports = {
       title: 'webpack title',
       template: './index.html',
     }),
-    new ReactRefreshWebpackPlugin(),
+    // new ReactRefreshWebpackPlugin(),
     new VueLoaderPlugin(),
   ],
 }
