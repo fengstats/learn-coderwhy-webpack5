@@ -1,7 +1,7 @@
 "use strict";
-exports.__esModule = true;
-var message = 'Hello TypeScript';
-var foo = function (info) {
+Object.defineProperty(exports, "__esModule", { value: true });
+const message = 'Hello TypeScript';
+const foo = (info) => {
     console.log(info);
 };
 foo(message);
