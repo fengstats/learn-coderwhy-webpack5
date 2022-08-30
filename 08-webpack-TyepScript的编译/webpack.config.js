@@ -17,15 +17,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(jsx?|ts)$/,
         use: 'babel-loader',
         // 排除匹配规则
         exclude: /node_modules/
-      },
-      {
-        test: /\.ts$/,
-        use: 'ts-loader'
       }
+      // {
+      //   test: /\.ts$/,
+      //   // 本质进行代码转换处理的还是 typescript
+      //   use: 'ts-loader'
+      // }
     ]
   },
 
