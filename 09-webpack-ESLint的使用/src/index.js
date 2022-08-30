@@ -5,3 +5,5 @@ const foo = (info) => {
 }
 
 foo(message)
+
+// export {}

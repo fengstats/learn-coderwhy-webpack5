@@ -5,13 +5,15 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 // 指定生成html模板J
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const ESLintPlugin = require('eslint-webpack-plugin')
+
 module.exports = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
   entry: './src/index.js',
   output: {
     path: resolve(__dirname, 'dist'),
-    filename: './js/bundle.js'
+    filename: './js/bundle.js',
   },
 
   module: {
@@ -20,16 +22,17 @@ module.exports = {
         test: /\.(jsx?|ts)$/,
         use: 'babel-loader',
         // 排除匹配规则
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
 
   // 插件
   plugins: [
+    // new ESLintPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'custom title'
-    })
-  ]
+      title: 'custom title',
+    }),
+  ],
 }
