@@ -1,6 +1,11 @@
 const path = require('path')
+const { merge } = require('webpack-merge')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-// 开发文件配置
+const envConfig = require('./webpack.dev.js')
+const prodConfig = require('./webpack.prod.js')
+
+// 公共 webpack 配置
 const commonConfig = {
   // 这里可以直接 ./ 寻找 index.js 入口文件的原因是
   // entry 是根据 context 上下文路径寻找的，而 context 的默认值就是 package.json 所在的根目录
@@ -29,7 +34,12 @@ const commonConfig = {
       },
     ],
   },
-  plugins: [],
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'webpack title',
+      template: './index.html',
+    }),
+  ],
 }
 
 // tip: 这里导出一个函数，不然无法接收 env 这个参数
@@ -40,8 +50,8 @@ module.exports = (env) => {
   // - 通过 production === true 判断是否是是生产环境，选一即可
   // const isDevelopment = env.development
   const isProduction = env.production
+  console.log('环境：', isProduction ? '生产环境' : '开发环境')
 
-  console.log('是否是生产环境', isProduction)
-
-  return commonConfig
+  // 根据环境判断合并配置
+  return merge(commonConfig, isProduction ? prodConfig : envConfig)
 }
