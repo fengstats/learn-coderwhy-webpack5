@@ -1,9 +1,9 @@
-const path = require('path')
 const { merge } = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const envConfig = require('./webpack.dev.js')
 const prodConfig = require('./webpack.prod.js')
+const { createWorkDir } = require('./paths')
 
 // 公共 webpack 配置
 const commonConfig = {
@@ -15,13 +15,16 @@ const commonConfig = {
   output: {
     filename: 'bundle.js',
     // 因为这里与根目录的距离是 ../ 所以我们设置打包目录的绝对路径的时候需要向上返回一层目录
-    path: path.resolve(__dirname, '../dist'),
+    // path: path.resolve(__dirname, '../dist'),
+    path: createWorkDir('./dist'),
   },
   resolve: {
     extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx', '.ts', '.vue'],
     alias: {
-      '@': path.resolve(__dirname, '../src'),
-      pages: path.resolve(__dirname, '../src/pages'),
+      // '@': path.resolve(__dirname, '../src'),
+      // pages: path.resolve(__dirname, '../src/pages'),
+      '@': createWorkDir('./src'),
+      pages: createWorkDir('./src/pages'),
     },
   },
   module: {
