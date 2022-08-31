@@ -15,5 +15,8 @@
 /dist
 **/dist
 
-# misc
+# vacode
+.history
+
+# mac
 .DS_Store

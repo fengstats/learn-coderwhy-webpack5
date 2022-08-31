@@ -8,9 +8,11 @@ module.exports = {
   entry: './src/index.js',
   devtool: 'cheap-module-source-map',
 
-  // 专为 webpack-dev-server 的配置
+  // 开发服务
   devServer: {
     hot: true,
+    // 解决路由模式为 history 时，切换路由后刷新页面 404 问题
+    historyApiFallback: true,
   },
 
   output: {
