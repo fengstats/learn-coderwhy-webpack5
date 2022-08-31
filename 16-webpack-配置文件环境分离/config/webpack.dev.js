@@ -1,4 +1,4 @@
-// const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 // 开发文件配置
 module.exports = {
@@ -12,6 +12,6 @@ module.exports = {
   },
   plugins: [
     // React HMR
-    // new ReactRefreshWebpackPlugin(),
+    new ReactRefreshWebpackPlugin(),
   ],
 }

@@ -53,7 +53,13 @@ module.exports = (env) => {
   // - 通过 production === true 判断是否是是生产环境，选一即可
   // const isDevelopment = env.development
   const isProduction = env.production
-  console.log('环境：', isProduction ? '生产环境' : '开发环境')
+
+  // tip：貌似赋值给 process.env.xxx 的变量，最后类型都会变成 string（字符串）
+  // 这里测试了一下，确实会这样，可能是 webpack 或者 node 内部进行赋值的一些处理？
+  // process.env.NODE_ENV = false
+  process.env.NODE_ENV = isProduction ? 'production' : 'development'
+
+  console.log('环境：', process.env.NODE_ENV)
 
   // 根据环境判断合并配置
   return merge(commonConfig, isProduction ? prodConfig : envConfig)
