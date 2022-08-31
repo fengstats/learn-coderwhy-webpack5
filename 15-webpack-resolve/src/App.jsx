@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom'
 
-import Home from './pages/Home.jsx'
-import About from './pages/About.jsx'
+import Home from '@/pages/Home'
+import About from 'pages/About.jsx'
+
+console.log('App.jsx 文件')
 
 class App extends Component {
   constructor(props) {

@@ -8,6 +8,11 @@ module.exports = {
   entry: './src/index.js',
   devtool: 'cheap-module-source-map',
 
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, './dist'),
+  },
+
   // 开发服务
   devServer: {
     hot: true,
@@ -15,9 +20,18 @@ module.exports = {
     historyApiFallback: true,
   },
 
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, './dist'),
+  // 用于设置模块如何被解析
+  resolve: {
+    // 引入模块从哪些目录进行检索查找
+    // modules: ['node_module']
+    // 自动填充后缀：可以让我们引入资源文件时省略后缀的编写，webpack 会根据这个配置项中的后缀一一进行匹配，若未匹配到则报错
+    // tip: 建议在文件引入时还是要添加上后缀的，一来可以省去 webpack 的匹配查找时间，二来自己看代码的时候也知道引入的到底是什么类型的文件
+    extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx', '.ts', '.vue'],
+    // 配置别名：顾名思义，其实就是替代一下相对路径引入的写法，提前帮你把绝对路径配置好了
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+      pages: path.resolve(__dirname, 'src/pages'),
+    },
   },
 
   module: {
