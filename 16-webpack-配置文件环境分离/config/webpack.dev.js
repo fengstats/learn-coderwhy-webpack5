@@ -7,7 +7,8 @@ module.exports = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
   devServer: {
-    hot: 'only',
+    // hot: 'only',
+    hot: true,
     historyApiFallback: true,
   },
   plugins: [
