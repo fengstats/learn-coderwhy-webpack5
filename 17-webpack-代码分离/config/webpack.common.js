@@ -38,6 +38,10 @@ const commonConfig = {
   },
 
   optimization: {
+    // natural：使用自然数排序作为名称，不利于浏览器缓存
+    // named：使用包所在目录作为 name（开发环境推荐）
+    // deterministic：生成 id，针对相同文件的 id 不变（生产环境推荐）
+    chunkIds: 'deterministic',
     minimizer: [
       new TerserPlugin({
         // 去除打包后的 .LICENSE.txt 文件
