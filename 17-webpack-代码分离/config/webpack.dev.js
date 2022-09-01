@@ -5,6 +5,16 @@ const { createWorkDir } = require('./paths')
 module.exports = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
+
+  // output: {
+  //   // 设置分离文件打包格式
+  //   chunkFilename: '[name].[hash:6].chunk.js',
+  // },
+
+  // optimization: {
+  //   chunkIds: 'deterministic',
+  // },
+
   devServer: {
     // hot: 'only',
     hot: true,
