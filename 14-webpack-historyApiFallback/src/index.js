@@ -6,7 +6,7 @@ import './math'
 import ReactApp from './App.jsx'
 import VueApp from './App.vue'
 
-console.log('Hello Webpack')
+// console.log('Hello Webpack')
 
 if (module.hot) {
   module.hot.accept('./math.js', () => {
