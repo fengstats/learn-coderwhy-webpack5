@@ -28,6 +28,8 @@ const commonConfig = {
     // 因为多入口的原因，需要配置不同的打包文件
     filename: '[name].bundle.js',
     path: createWorkDir('./dist'),
+    // 设置分离文件打包格式
+    chunkFilename: '[name].chunk.js',
   },
   resolve: {
     extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx', '.ts', '.vue'],
