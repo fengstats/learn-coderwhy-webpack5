@@ -1,4 +1,5 @@
 const { merge } = require('webpack-merge')
+const { ProvidePlugin } = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const envConfig = require('./webpack.dev.js')
@@ -25,6 +26,13 @@ const commonConfig = {
     new HtmlWebpackPlugin({
       title: 'webpack title',
       template: './index.html',
+    }),
+    // 当代码中遇到某个变量 undefined 时，此插件会自动导入对应的库
+    new ProvidePlugin({
+      // 变量名称: 对应的依赖库
+      axios: 'axios',
+      // ['依赖库', '依赖库中的方法或者属性']
+      get: ['axios', 'get'],
     }),
   ],
 }
