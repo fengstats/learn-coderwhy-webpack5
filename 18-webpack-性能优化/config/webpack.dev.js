@@ -9,6 +9,15 @@ module.exports = {
     historyApiFallback: true,
   },
 
+  module: {
+    // rules: [
+    //   {
+    //     test: /\.css$/,
+    //     use: ['style-loader', 'css-loader'],
+    //   },
+    // ],
+  },
+
   resolve: {
     extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx', '.ts', '.vue'],
     alias: {

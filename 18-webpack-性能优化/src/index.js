@@ -2,6 +2,7 @@
 // if (module.hot) {
 //   module.hot.accept()
 // }
+import './style/index.css'
 
 console.log('hello index page')
 

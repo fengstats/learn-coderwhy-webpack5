@@ -1,5 +1,7 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 const { createWorkDir } = require('./paths')
 
 // 生产文件配置
@@ -7,9 +9,9 @@ module.exports = {
   mode: 'production',
 
   output: {
-    filename: '[name].bundle.js',
+    filename: 'js/[name].bundle.js',
     path: createWorkDir('./dist'),
-    chunkFilename: '[name].[hash:6].chunk.js',
+    chunkFilename: 'js/[name].[hash:6].chunk.js',
     // 配置 cdn 地址
     // publicPath: 'https://shifeng.chen/cdn',
   },
@@ -20,6 +22,15 @@ module.exports = {
     lodash: '_',
     dayjs: 'dayjs',
   },
+
+  // module: {
+  //   rules: [
+  //     {
+  //       test: /\.css$/,
+  //       use: [MiniCssExtractPlugin.loader, 'css-loader'],
+  //     },
+  //   ],
+  // },
 
   optimization: {
     chunkIds: 'deterministic',
@@ -64,11 +75,16 @@ module.exports = {
         },
         vendor: {
           test: /[\\/]node_modules[\\/]/,
-          filename: '[id]_vendor_chen.js',
+          filename: 'js/[id]_vendor_chen.js',
         },
       },
     },
   },
 
-  plugins: [new CleanWebpackPlugin()],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css',
+    }),
+  ],
 }
