@@ -4,9 +4,9 @@
 // console.log(_.join(['hello', 'main']))
 // console.log('index', dayjs())
 
-if (module.hot) {
-  module.hot.accept()
-}
+// if (module.hot) {
+//   module.hot.accept()
+// }
 
 console.log('hello main page')
 

@@ -1,3 +1,4 @@
+// @ts-ignore
 const { merge } = require('webpack-merge')
 const { ProvidePlugin } = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')

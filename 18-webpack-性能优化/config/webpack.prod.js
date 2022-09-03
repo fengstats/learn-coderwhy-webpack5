@@ -9,8 +9,11 @@ module.exports = {
   mode: 'production',
 
   output: {
-    filename: 'js/[name].bundle.js',
     path: createWorkDir('./dist'),
+    // hash:
+    // contentHash
+    // chunkHash
+    filename: 'js/[name].[hash:6].bundle.js',
     chunkFilename: 'js/[name].[hash:6].chunk.js',
     // 配置 cdn 地址
     // publicPath: 'https://shifeng.chen/cdn',

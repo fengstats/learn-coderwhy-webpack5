@@ -6,15 +6,6 @@ const { createWorkDir } = require('./paths')
 module.exports = {
   mode: 'production',
 
-  output: {
-    // filename: 'bundle.js',
-    // 因为多入口的原因，需要配置不同的打包文件
-    filename: '[name].bundle.js',
-    path: createWorkDir('./dist'),
-    // 设置分离文件打包格式
-    chunkFilename: '[name].[hash:6].chunk.js',
-  },
-
   optimization: {
     // natural：使用自然数排序作为名称，不利于浏览器缓存
     // named：使用包所在目录作为 name（开发环境推荐）
