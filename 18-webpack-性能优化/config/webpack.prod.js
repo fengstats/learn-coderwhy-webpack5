@@ -10,10 +10,29 @@ module.exports = {
     filename: '[name].bundle.js',
     path: createWorkDir('./dist'),
     chunkFilename: '[name].[hash:6].chunk.js',
+    // 配置 cdn 地址
+    // publicPath: 'https://shifeng.chen/cdn',
+  },
+
+  // 排除指定模块打包
+  externals: {
+    // 模块名: 暴露变量
+    lodash: '_',
+    dayjs: 'dayjs',
   },
 
   optimization: {
     chunkIds: 'deterministic',
+    // 配置为 true 或者 'multiple 效果一样
+    // runtimeChunk: true,
+    runtimeChunk: {
+      // 自己定义打包前缀
+      name: 'custom-chen',
+      // name: (entrypoint) => {
+      //   // 结合入口文件名称
+      //   return `custom-${entrypoint.name}`
+      // },
+    },
     minimizer: [
       new TerserPlugin({
         // 去除打包后的 .LICENSE.txt 文件
