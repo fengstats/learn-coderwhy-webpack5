@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -7,6 +8,7 @@ const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
 module.exports = {
   // 因为在 production 模式下打包默认会使用 TerserPlugin 插件进行，所以我们使用 development 模式来查看效果
   mode: 'development',
+  // mode: 'production',
   entry: './src/main.js',
   devtool: 'source-map',
   output: {
@@ -50,5 +52,7 @@ module.exports = {
       filename: '[name].bundle.css',
     }),
     new CssMinimizerWebpackPlugin(),
+    // 作用域提升
+    new webpack.optimize.ModuleConcatenationPlugin(),
   ],
 }
