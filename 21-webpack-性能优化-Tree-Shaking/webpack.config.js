@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -39,6 +40,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        sideEffects: true,
       },
     ],
   },
@@ -49,6 +51,11 @@ module.exports = {
       filename: '[name].bundle.css',
     }),
     new CssMinimizerWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Tree Shaking',
+      // 设置模板
+      template: './index.html',
+    }),
     // new webpack.optimize.ModuleConcatenationPlugin(),
   ],
 }

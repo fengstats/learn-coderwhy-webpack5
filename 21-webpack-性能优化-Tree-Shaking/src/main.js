@@ -1,6 +1,7 @@
-// import './index.css'
-import { sum, mul } from './math'
+import { sum } from './math'
+// 引入但是不使用，看看 Tree Shaking 会不会在打包时移除这段代码
+import './format'
 
-// console.log(obj.say())
+import './index.css'
+
 console.log(sum(1, 2))
-// console.log(mul(1, 2))
