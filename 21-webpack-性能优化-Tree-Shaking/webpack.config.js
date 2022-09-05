@@ -5,9 +5,15 @@ const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const glob = require('glob')
+const PurgecssPlugin = require('purgecss-webpack-plugin')
+
+// 测试使用
+// let mode = 'development'
+let mode = 'production'
 
 module.exports = {
-  mode: 'development',
+  mode,
   entry: './src/main.js',
   devtool: 'source-map',
   output: {
@@ -39,7 +45,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [mode === 'production' ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader'],
         sideEffects: true,
       },
     ],
@@ -57,5 +63,17 @@ module.exports = {
       template: './index.html',
     }),
     // new webpack.optimize.ModuleConcatenationPlugin(),
+
+    // @ts-ignore
+    new PurgecssPlugin({
+      // 匹配 src 目录下的所有文件（包括 js）
+      paths: glob.sync(`${path.join(__dirname, 'src')}/**/*`, { nodir: true }),
+      // 默认情况下，purgecss 会将我们的 html 标签样式移除掉，如果希望保留，可以添加下面这个属性
+      safelist: () => {
+        return {
+          standard: ['html'],
+        }
+      },
+    }),
   ],
 }
