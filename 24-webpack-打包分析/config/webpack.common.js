@@ -3,6 +3,8 @@ const { merge } = require('webpack-merge')
 const { ProvidePlugin } = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+// 可视化查看包大小分析插件
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 const envConfig = require('./webpack.dev.js')
 const prodConfig = require('./webpack.prod.js')
@@ -47,6 +49,7 @@ const commonConfigFunc = (isProduction) => {
         // ['依赖库', '依赖库中的方法或者属性']
         get: ['axios', 'get'],
       }),
+      new BundleAnalyzerPlugin(),
     ],
   }
 }
