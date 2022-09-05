@@ -1,6 +1,6 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const { createWorkDir } = require('./paths')
 
@@ -10,13 +10,8 @@ module.exports = {
 
   output: {
     path: createWorkDir('./dist'),
-    // hash：多入口文件配置时，当一个文件的内容被改变，其他入口文件 hash 值也会发生变化
-    // chunkhash：多入口文件配置，当一个文件的内容被改变，其他文件 hash 值保持不变
-    // contenthash：针对文件内容变化进行 hash 值的改变，只要文件内容不变，打包文件对应 hash 值中不变
     filename: 'js/[name].[hash:6].bundle.js',
     chunkFilename: 'js/[name].[contenthash:6].chunk.js',
-    // 配置 cdn 地址
-    // publicPath: 'https://shifeng.chen/cdn',
   },
 
   // 排除指定模块打包
@@ -87,8 +82,8 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     // tip: smp 兼容问题
-    // new MiniCssExtractPlugin({
-    //   filename: 'css/[name].css',
-    // }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css',
+    }),
   ],
 }

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --config=./config/webpack.common.js --env=development",
-    "build": "webpack --config=./config/webpack.common.js --env=production"
+    "build": "webpack --config=./config/webpack.common.js --env=production",
+    "stats": "webpack --profile --json=stats.json --config=./config/webpack.common.js --env=production"
   },
   "author": "",
   "license": "ISC",
