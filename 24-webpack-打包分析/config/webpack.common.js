@@ -2,11 +2,15 @@
 const { merge } = require('webpack-merge')
 const { ProvidePlugin } = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const envConfig = require('./webpack.dev.js')
 const prodConfig = require('./webpack.prod.js')
 // const { createWorkDir } = require('./paths')
+
+// 分析打包时间的插件
+const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin')
+const smp = new SpeedMeasureWebpackPlugin()
 
 // 公共 webpack 配置
 const commonConfigFunc = (isProduction) => {
@@ -20,7 +24,9 @@ const commonConfigFunc = (isProduction) => {
       rules: [
         {
           test: /\.css$/,
-          use: [isProduction ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader'],
+          // todo: smp 兼容问题
+          use: ['style-loader', 'css-loader'],
+          // use: [isProduction ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader'],
         },
         {
           test: /\.jsx?$/i,
@@ -52,5 +58,5 @@ module.exports = (env) => {
   console.log('环境：', process.env.NODE_ENV)
 
   // 根据环境判断合并配置
-  return merge(commonConfigFunc(isProduction), isProduction ? prodConfig : envConfig)
+  return smp.wrap(merge(commonConfigFunc(isProduction), isProduction ? prodConfig : envConfig))
 }
