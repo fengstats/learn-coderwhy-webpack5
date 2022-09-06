@@ -16,13 +16,28 @@ module.exports = {
   },
   module: {
     rules: [
+      // {
+      //   test: /\.js$/,
+      //   // 相对于 context
+      //   // use: './loaders/coderlazy-loader',
+      //   // 在 resolveLoader.modules 中配置了自己 loader 目录，就可以省略掉一些相对路径的引入了
+      //   // 执行顺序：从右往左、从下往上
+      //   use: ['coderlazy-loader01', 'coderlazy-loader02', 'coderlazy-loader03'],
+      // },
       {
-        test: /\.js$/,
-        // 相对于 context
-        // use: './loaders/coderlazy-loader',
-        // 在 resolveLoader.modules 中配置了自己 loader 目录，就可以省略掉一些相对路径的引入了
-        // 执行顺序：从右往左、从下往上
-        use: ['coderlazy-loader01', 'coderlazy-loader02', 'coderlazy-loader03'],
+        test: /\.js$/i,
+        use: 'coderlazy-loader01',
+      },
+      {
+        test: /\.js$/i,
+        use: 'coderlazy-loader02',
+        // pre：PitchLoader 最后加载，NormalLoader 最先加载
+        // post: 与 pre 相反
+        enforce: 'post',
+      },
+      {
+        test: /\.js$/i,
+        use: 'coderlazy-loader03',
       },
     ],
   },
