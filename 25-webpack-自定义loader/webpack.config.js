@@ -12,7 +12,7 @@ module.exports = {
   resolveLoader: {
     // loader 路径查找的问题，默认是只配置了 node_modules
     // 所以在查找模块的时候才会先去 node_modules 中查找
-    modules: ['node_modules', './loaders'],
+    modules: ['./node_modules', './loaders'],
   },
   module: {
     rules: [
@@ -24,20 +24,33 @@ module.exports = {
       //   // 执行顺序：从右往左、从下往上
       //   use: ['coderlazy-loader01', 'coderlazy-loader02', 'coderlazy-loader03'],
       // },
+      // {
+      //   test: /\.js$/i,
+      //   use: 'coderlazy-loader01',
+      // },
+      // {
+      //   test: /\.js$/i,
+      //   use: 'coderlazy-loader02',
+      //   // pre：PitchLoader 最后加载，NormalLoader 最先加载
+      //   // post: 与 pre 相反
+      //   enforce: 'post',
+      // },
+      // {
+      //   test: /\.js$/i,
+      //   use: 'coderlazy-loader03',
+      // },
+
+      // 传入一些额外的参数 options
       {
         test: /\.js$/i,
-        use: 'coderlazy-loader01',
-      },
-      {
-        test: /\.js$/i,
-        use: 'coderlazy-loader02',
-        // pre：PitchLoader 最后加载，NormalLoader 最先加载
-        // post: 与 pre 相反
-        enforce: 'post',
-      },
-      {
-        test: /\.js$/i,
-        use: 'coderlazy-loader03',
+        use: {
+          loader: 'coderlazy-loader02',
+          options: {
+            name: 'xiaochen',
+            age: 18,
+            // age: '18',
+          },
+        },
       },
     ],
   },
