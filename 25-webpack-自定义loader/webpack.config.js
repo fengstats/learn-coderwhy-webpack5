@@ -21,7 +21,8 @@ module.exports = {
         // 相对于 context
         // use: './loaders/coderlazy-loader',
         // 在 resolveLoader.modules 中配置了自己 loader 目录，就可以省略掉一些相对路径的引入了
-        use: 'coderlazy-loader',
+        // 执行顺序：从右往左、从下往上
+        use: ['coderlazy-loader01', 'coderlazy-loader02', 'coderlazy-loader03'],
       },
     ],
   },
