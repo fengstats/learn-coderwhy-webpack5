@@ -4,6 +4,7 @@ module.exports = {
   mode: 'development',
   // 相对于 context
   entry: './src/main.js',
+  devtool: 'source-map',
   context: path.resolve(__dirname, './'),
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -16,6 +17,16 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'lazybabel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+
       // {
       //   test: /\.js$/,
       //   // 相对于 context
@@ -41,17 +52,17 @@ module.exports = {
       // },
 
       // 传入一些额外的参数 options
-      {
-        test: /\.js$/i,
-        use: {
-          loader: 'coderlazy-loader02',
-          options: {
-            name: 'xiaochen',
-            age: 18,
-            // age: '18',
-          },
-        },
-      },
+      // {
+      //   test: /\.js$/i,
+      //   use: {
+      //     loader: 'coderlazy-loader02',
+      //     options: {
+      //       name: 'xiaochen',
+      //       age: 18,
+      //       // age: '18',
+      //     },
+      //   },
+      // },
     ],
   },
 }
