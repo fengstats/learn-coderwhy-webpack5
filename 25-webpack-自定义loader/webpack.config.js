@@ -1,4 +1,5 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -18,13 +19,24 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.js$/i,
         use: {
           loader: 'lazybabel-loader',
           options: {
             presets: ['@babel/preset-env'],
           },
         },
+      },
+
+      {
+        test: /\.md$/i,
+        use: 'lazymd-loader',
+        // use: ['html-loader', 'lazymd-loader'],
+      },
+
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       },
 
       // {
@@ -65,4 +77,10 @@ module.exports = {
       // },
     ],
   },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html',
+    }),
+  ],
 }
