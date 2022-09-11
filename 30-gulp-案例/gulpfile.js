@@ -6,6 +6,16 @@ const less = require('gulp-less')
 const postcss = require('gulp-postcss')
 const postcssPresetEnv = require('postcss-preset-env')
 const inject = require('gulp-inject')
+// 注意：目前 del@7.0.0 的包是纯 ESM，不能混在 CommonJS 中使用
+// 所以我们安装了较低版本的 del@4.1.1
+const del = require('del')
+
+// 删除打包目录
+const delBuildDir = (cb) => {
+  const res = del.sync(['dist'])
+  console.log('deleted:', res)
+  cb()
+}
 
 const htmlTask = () => {
   // 记得将流返回出去，否则任务无法正常结束
@@ -52,6 +62,6 @@ const injectHtmlTask = () => {
 }
 
 // 组合：让前面的几个任务以串行的方式按顺序执行
-const build = series(htmlTask, jsTask, lessTask, injectHtmlTask)
+const build = series(delBuildDir, htmlTask, jsTask, lessTask, injectHtmlTask)
 
-module.exports = { htmlTask, jsTask, lessTask, injectHtmlTask, build }
+module.exports = { delBuildDir, htmlTask, jsTask, lessTask, injectHtmlTask, build }
