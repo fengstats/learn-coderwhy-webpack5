@@ -1,4 +1,4 @@
-const { src, dest, series, watch } = require('gulp')
+const { src, dest, series, parallel, watch } = require('gulp')
 const htmlMin = require('gulp-htmlmin')
 const babel = require('gulp-babel')
 const terser = require('gulp-terser')
@@ -12,7 +12,7 @@ const del = require('del')
 const browserSync = require('browser-sync')
 
 // 删除打包目录
-const delBuildDir = (cb) => {
+const clean = (cb) => {
   const res = del.sync(['dist'])
   console.log('deleted:', res)
   cb()
@@ -67,7 +67,7 @@ const bs = browserSync.create()
 // 开启一个本地服务
 const server = () => {
   // 通过 watch 来监听文件变化执行打包操作
-  watch('./src/index.html', htmlTask)
+  watch('./src/index.html', series(htmlTask, injectHtmlTask))
   watch('./src/js/*.js', series(jsTask, injectHtmlTask))
   watch('./src/css/*.less', series(lessTask, injectHtmlTask))
 
@@ -84,7 +84,10 @@ const server = () => {
   })
 }
 
-// 组合：让前面的几个任务以串行的方式按顺序执行
-const build = series(delBuildDir, htmlTask, jsTask, lessTask, injectHtmlTask)
+// 打包
+// html/js/css 的打包工作可以并行执行
+const build = series(clean, parallel(htmlTask, jsTask, lessTask), injectHtmlTask)
+// 开发
+const serve = series(build, server)
 
-module.exports = { delBuildDir, htmlTask, jsTask, lessTask, injectHtmlTask, build, server }
+module.exports = { clean, htmlTask, jsTask, lessTask, injectHtmlTask, server, build, serve }

@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "dev": "gulp serve",
+    "build": "gulp build"
+  },
   "devDependencies": {
     "@babel/core": "^7.19.0",
     "@babel/preset-env": "^7.19.0",
