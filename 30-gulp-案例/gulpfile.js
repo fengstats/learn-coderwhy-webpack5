@@ -1,4 +1,4 @@
-const { src, dest, series } = require('gulp')
+const { src, dest, series, watch } = require('gulp')
 const htmlMin = require('gulp-htmlmin')
 const babel = require('gulp-babel')
 const terser = require('gulp-terser')
@@ -9,6 +9,7 @@ const inject = require('gulp-inject')
 // 注意：目前 del@7.0.0 的包是纯 ESM，不能混在 CommonJS 中使用
 // 所以我们安装了较低版本的 del@4.1.1
 const del = require('del')
+const browserSync = require('browser-sync')
 
 // 删除打包目录
 const delBuildDir = (cb) => {
@@ -61,7 +62,29 @@ const injectHtmlTask = () => {
     .pipe(dest('./dist'))
 }
 
+// 创建一个服务
+const bs = browserSync.create()
+// 开启一个本地服务
+const server = () => {
+  // 通过 watch 来监听文件变化执行打包操作
+  watch('./src/index.html', htmlTask)
+  watch('./src/js/*.js', series(jsTask, injectHtmlTask))
+  watch('./src/css/*.less', series(lessTask, injectHtmlTask))
+
+  bs.init({
+    port: 8080,
+    // 自动打开浏览器
+    open: true,
+    // 哪些文件变化时需要刷新浏览器
+    files: './dist/*',
+    server: {
+      // 服务根目录jjjkkk
+      baseDir: './dist',
+    },
+  })
+}
+
 // 组合：让前面的几个任务以串行的方式按顺序执行
 const build = series(delBuildDir, htmlTask, jsTask, lessTask, injectHtmlTask)
 
-module.exports = { delBuildDir, htmlTask, jsTask, lessTask, injectHtmlTask, build }
+module.exports = { delBuildDir, htmlTask, jsTask, lessTask, injectHtmlTask, build, server }
