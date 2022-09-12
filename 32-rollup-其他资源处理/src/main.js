@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 
 import './css/style.css'
+// @ts-ignore
 import App from './vue/App.vue'
 
 const app = createApp(App)
