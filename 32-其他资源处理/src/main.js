@@ -9,6 +9,6 @@ app.mount('#app')
 const sum = (n1, n2) => {
   return n1 + n2
 }
-console.log(sum)
+console.log(sum(1, 3))
 
 export { sum }
