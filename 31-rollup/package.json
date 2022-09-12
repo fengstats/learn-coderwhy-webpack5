@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "build": "pnpm cjs-build && pnpm iife-build && pnpm amd-build && pnpm umd-build",
+    "build": "rollup -c",
+    "cli-build": "pnpm cjs-build && pnpm iife-build && pnpm amd-build && pnpm umd-build",
     "cjs-build": "rollup ./src/main.js -f cjs -o dist/bundle.js",
     "iife-build": "rollup ./src/main.js -f iife -o dist/bundle.browser.js",
     "amd-build": "rollup ./src/main.js -f amd -o dist/bundle.amd.js",
