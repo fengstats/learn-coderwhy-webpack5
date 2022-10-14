@@ -40,11 +40,11 @@ module.exports = {
     // 如何项目出现源代码错误报错后修复
     // 当 hotOnly 为 false 时，浏览器会刷新，此时保留的一些状态信息也会刷新
     // 当 hotOnly 为 true 时，浏览器只会更新错误的一部分内容
-    // todo: 貌似这个属性现在已经不能用了，应该添加到 hot 内变成一个参数了
+    // todo：貌似这个属性现在已经不能用了，应该添加到 hot 内变成一个参数了
     // hotOnly: true,
     // 开发时静态资源服务的路径拼接，建议与 output.publicPath 保持一致
     // publicPath: '',
-    // todo: 后面遇到再看，还是有点懵
+    // todo：后面遇到再看，还是有点懵
     // contentBase: path.resolve(__dirname, './')
     // 监听 contentBase 目录下的资源是否变更，变更后直接刷新浏览器
     // watchContentBase: true,

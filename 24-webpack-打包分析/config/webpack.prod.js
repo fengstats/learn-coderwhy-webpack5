@@ -81,7 +81,7 @@ module.exports = {
 
   plugins: [
     new CleanWebpackPlugin(),
-    // tip: smp 兼容问题
+    // tip：smp 兼容问题
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
     }),

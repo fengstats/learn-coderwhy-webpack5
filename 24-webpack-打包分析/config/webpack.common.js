@@ -26,7 +26,7 @@ const commonConfigFunc = (isProduction) => {
       rules: [
         {
           test: /\.css$/,
-          // todo: smp 兼容问题
+          // todo：smp 兼容问题
           // use: ['style-loader', 'css-loader'],
           use: [isProduction ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader'],
         },

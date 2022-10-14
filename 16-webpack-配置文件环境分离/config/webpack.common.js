@@ -45,7 +45,7 @@ const commonConfig = {
   ],
 }
 
-// tip: 这里导出一个函数，不然无法接收 env 这个参数
+// tip：这里导出一个函数，不然无法接收 env 这个参数
 module.exports = (env) => {
   // console.log(env) // env = { WEBPACK_BUNDLE: true, WEBPACK_BUILD: true, development: true }
   // 因为我们在 package.json 启动项中传入了 --env=development 所以接收的这个对象就多了 development 这个属性为 true
