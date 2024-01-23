@@ -12,7 +12,7 @@ class AutoUploadPlugin {
       // 1. 获取打包目录和服务器上传目录
       const outputPath = compilation.outputOptions.path
       const serverPath = this.options.serverPath
-      //  todo：做个简单的先判断只要不是根目录就能删，后面在完善
+      // todo：做个简单的先判断只要不是根目录就能删，后面在完善
       if (serverPath === '/') {
         console.log('检验为根目录：取消文件上传')
         return callback()

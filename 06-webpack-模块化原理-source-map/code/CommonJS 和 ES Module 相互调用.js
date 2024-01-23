@@ -2,7 +2,7 @@ var __webpack_modules__ = {
   './src/utils/format.js': function (
     __unused_webpack_module,
     __webpack_exports__,
-    __webpack_require__
+    __webpack_require__,
   ) {
     'use strict'
     __webpack_require__.r(__webpack_exports__)
@@ -12,7 +12,7 @@ var __webpack_modules__ = {
       },
       formatPrice: function () {
         return formatPrice
-      }
+      },
     })
     // 通过 ES Module 方式进行导出
 
@@ -38,9 +38,9 @@ var __webpack_modules__ = {
 
     module.exports = {
       sum,
-      test
+      test,
     }
-  }
+  },
 }
 var __webpack_module_cache__ = {}
 
@@ -51,7 +51,7 @@ function __webpack_require__(moduleId) {
     return cachedModule.exports
   }
   var module = (__webpack_module_cache__[moduleId] = {
-    exports: {}
+    exports: {},
   })
 
   __webpack_modules__[moduleId](module, module.exports, __webpack_require__)
@@ -70,7 +70,7 @@ function __webpack_require__(moduleId) {
         : function () {
             return module
           }
-    // todo: 这个 a 没看懂,主要也没有使用到
+    // todo：这个 a 没看懂，主要也没有使用到
     __webpack_require__.d(getter, { a: getter })
     return getter
   }
@@ -110,7 +110,7 @@ var __webpack_exports__ = {}
   // 使用 ES Module 的方式导入 CommonJS 导出的内容
   var _utils_math_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__('./src/utils/math.js')
   var _utils_math_js__WEBPACK_IMPORTED_MODULE_0___default = __webpack_require__.n(
-    _utils_math_js__WEBPACK_IMPORTED_MODULE_0__
+    _utils_math_js__WEBPACK_IMPORTED_MODULE_0__,
   )
 
   // 使用 CommonJS 的方式导入 ES Module 导出的内容
